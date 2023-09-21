@@ -30,9 +30,7 @@ export class Car{
         if(!this.damaged){
             this.#move();
         this.polygon = this.#createPolygon();
-        this.damaged= this.#accessDamage(roadBorders, traffic);
-        
-        
+        this.damaged= this.#accessDamage(roadBorders, traffic);  
         }
         if(this.sensor){
         this.sensor.update(roadBorders, traffic);
@@ -56,6 +54,7 @@ export class Car{
         }
         for (let i = 0; i < roadBorders.length; i++) {
                 if (traffic[i] != undefined) {
+                    
                     if(polysIntersect(this.polygon, traffic[i].polygon)){
                         return true;
                        }
@@ -119,7 +118,7 @@ export class Car{
          this.x -= Math.sin(this.angle)*this.speed;
          this.y -= Math.cos(this.angle)*this.speed;
     }
-    draw(ctx, color){
+    draw(ctx, color, drawSensor){
         
         if(this.damaged){
             ctx.fillStyle ="gray";
@@ -136,7 +135,7 @@ export class Car{
         }
         ctx.fill();
         }
-        if(this.sensor){
+        if(this.sensor && drawSensor){
         this.sensor.draw(ctx);
         }
     }

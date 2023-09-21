@@ -3,9 +3,9 @@ import { getIntersection } from "./utils.js";
 export class Sensor{
     constructor(car){
         this.car = car;
-        this.rayCount = 5;
+        this.rayCount = 6;
         this.rayLength = 130;
-        this.raySpread = Math.PI /2;
+        this.raySpread = Math.PI/2 ;
         this.rays=[];
         this.readings =[];
     }
